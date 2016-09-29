@@ -54,7 +54,7 @@ open class BubbleChartRenderer: BarLineScatterCandleBubbleRenderer
             ? ((maxSize == 0.0) ? 1.0 : sqrt(entrySize / maxSize))
             : entrySize
         let shapeSize: CGFloat = reference * factor
-        return shapeSize
+        return entrySize
     }
     
     fileprivate var _pointBuffer = CGPoint()
@@ -101,7 +101,7 @@ open class BubbleChartRenderer: BarLineScatterCandleBubbleRenderer
             _pointBuffer = _pointBuffer.applying(valueToPixelMatrix)
             
             let shapeSize = getShapeSize(entrySize: entry.size, maxSize: dataSet.maxSize, reference: referenceSize, normalizeSize: normalizeSize)
-            let shapeHalf = shapeSize / 2.0
+            let shapeHalf = shapeSize
             
             if !viewPortHandler.isInBoundsTop(_pointBuffer.y + shapeHalf)
                 || !viewPortHandler.isInBoundsBottom(_pointBuffer.y - shapeHalf)
